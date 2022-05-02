@@ -25228,19 +25228,19 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     Title: "Inception",
                     Description: "desc1...",
-                    ImagePath: "..."
+                    ImagePath: "https://resizing.flixster.com/8X8J8sNXmCWDBaxo3vueONLRj00=/206x305/v2/https://flxt.tmsimg.com/assets/p7825626_p_v8_af.jpg"
                 },
                 {
                     _id: 2,
                     Title: "The Shawshank Redemption",
                     Description: "desc2...",
-                    ImagePath: "..."
+                    ImagePath: "https://m.media-amazon.com/images/I/51zUbui+gbL._SY445_.jpg"
                 },
                 {
                     _id: 3,
                     Title: "Gladiator",
                     Description: "desc3...",
-                    ImagePath: "..."
+                    ImagePath: "https://m.media-amazon.com/images/I/51GA6V6VE1L._SY445_.jpg"
                 }, 
             ],
             selcetedMovie: null
@@ -25257,7 +25257,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 42
+                lineNumber: 45
             },
             __self: this,
             children: "The list is empty!"
@@ -25266,7 +25266,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 45
+                lineNumber: 48
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -25276,7 +25276,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 47
+                    lineNumber: 50
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -25286,7 +25286,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 55
+                        lineNumber: 58
                     },
                     __self: this
                 }, movie._id)
@@ -25370,6 +25370,7 @@ class MovieView extends _reactDefault.default.Component {
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
+                        crossOrigin: "",
                         src: movie.ImagePath,
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",

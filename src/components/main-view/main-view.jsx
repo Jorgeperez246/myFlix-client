@@ -12,19 +12,22 @@ export class MainView extends React.Component {
           _id: 1,
           Title: "Inception",
           Description: "desc1...",
-          ImagePath: "...",
+          ImagePath:
+            "https://resizing.flixster.com/8X8J8sNXmCWDBaxo3vueONLRj00=/206x305/v2/https://flxt.tmsimg.com/assets/p7825626_p_v8_af.jpg",
         },
         {
           _id: 2,
           Title: "The Shawshank Redemption",
           Description: "desc2...",
-          ImagePath: "...",
+          ImagePath:
+            "https://m.media-amazon.com/images/I/51zUbui+gbL._SY445_.jpg",
         },
         {
           _id: 3,
           Title: "Gladiator",
           Description: "desc3...",
-          ImagePath: "...",
+          ImagePath:
+            "https://m.media-amazon.com/images/I/51GA6V6VE1L._SY445_.jpg",
         },
       ],
       selcetedMovie: null,
