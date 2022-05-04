@@ -11,6 +11,20 @@ export class MainView extends React.Component {
       selcetedMovie: null,
     };
   }
+  componentDidMount() {
+    //get request query to /movies endpoint using Axios
+
+    axios
+      .get("https://myflixdb246.herokuapp.com/movies")
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie,
