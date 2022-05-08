@@ -32,6 +32,12 @@ export class MainView extends React.Component {
       selectedMovie: newSelectedMovie,
     });
   }
+  //func for successful register
+  onRegistration(register) {
+    this.setState({
+      register,
+    });
+  }
   //user logs in and function updates user property to particular user
   onLoggedIn(user) {
     this.setState({

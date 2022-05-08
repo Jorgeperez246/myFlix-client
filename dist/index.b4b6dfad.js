@@ -25122,6 +25122,12 @@ class MainView extends _reactDefault.default.Component {
             selectedMovie: newSelectedMovie
         });
     }
+    //func for successful register
+    onRegistration(register) {
+        this.setState({
+            register
+        });
+    }
     //user logs in and function updates user property to particular user
     onLoggedIn(user) {
         this.setState({
@@ -25135,7 +25141,7 @@ class MainView extends _reactDefault.default.Component {
             onLoggedIn: (user)=>this.onLoggedIn(user)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 46,
+            lineNumber: 52,
             columnNumber: 14
         }, this);
         if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -25143,7 +25149,7 @@ class MainView extends _reactDefault.default.Component {
             children: "The list is empty!"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 49,
+            lineNumber: 55,
             columnNumber: 14
         }, this);
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -25155,7 +25161,7 @@ class MainView extends _reactDefault.default.Component {
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 54,
+                lineNumber: 60,
                 columnNumber: 11
             }, this) : movies.map((movie1)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
                     movie: movie1,
@@ -25164,13 +25170,13 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, movie1._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 62,
+                    lineNumber: 68,
                     columnNumber: 13
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 52,
+            lineNumber: 58,
             columnNumber: 7
         }, this);
     }
@@ -29587,9 +29593,9 @@ MovieView.propTypes = {
         }),
         Director: _propTypesDefault.default.shape({
             Name: _propTypesDefault.default.string.isRequired,
-            Bio: _propTypesDefault.default.string.isRequired,
-            BirthYear: _propTypesDefault.default.number.isRequired
+            Bio: _propTypesDefault.default.string.isRequired
         }),
+        Actors: _propTypesDefault.default.array.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired
     }).isRequired
 };
