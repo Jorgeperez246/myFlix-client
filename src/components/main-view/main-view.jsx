@@ -3,6 +3,10 @@ import axios from "axios";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
+import { RegistrationView } from "../registration-view/registration-view";
+import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 export class MainView extends React.Component {
   constructor() {
@@ -55,26 +59,36 @@ export class MainView extends React.Component {
       return <div className="main-view">The list is empty!</div>;
 
     return (
-      <div className="main-view">
-        {selectedMovie ? (
-          <MovieView
-            movie={selectedMovie}
-            onBackClick={(newSelectedMovie) => {
-              this.setSelectedMovie(newSelectedMovie);
-            }}
-          />
-        ) : (
-          movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onMovieClick={(movie) => {
-                this.setSelectedMovie(movie);
-              }}
-            />
-          ))
-        )}
-      </div>
+      <Container>
+        <div className="main-view">
+          {selectedMovie ? (
+            <Row className="justify-content-md-center">
+              <Col md={10}>
+                <MovieView
+                  movie={selectedMovie}
+                  onBackClick={(newSelectedMovie) => {
+                    this.setSelectedMovie(newSelectedMovie);
+                  }}
+                />
+              </Col>
+            </Row>
+          ) : (
+            <Row className="justify-content-md-center">
+              {movies.map((movie) => (
+                <Col md={3}>
+                  <MovieCard
+                    key={movie._id}
+                    movie={movie}
+                    onMovieClick={(movie) => {
+                      this.setSelectedMovie(movie);
+                    }}
+                  />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </div>
+      </Container>
     );
   }
 }
