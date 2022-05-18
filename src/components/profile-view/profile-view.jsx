@@ -159,7 +159,7 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies, onBackClick } = this.props;
-    const { FavoriteMovies, Username, Email, Birthday } = this.state;
+    const { FavoriteMovies, Password, Username, Email, Birthday } = this.state;
 
     if (!Username) {
       return null;
@@ -173,7 +173,6 @@ export class ProfileView extends React.Component {
               <Card.Body>
                 <Card.Title>Profile</Card.Title>
                 <Form
-                  className="update-form"
                   onSubmit={(e) =>
                     this.editUser(
                       e,
@@ -202,7 +201,7 @@ export class ProfileView extends React.Component {
                       type="password"
                       name="Password"
                       placeholder="New Password"
-                      value=""
+                      value={Password}
                       onChange={(e) => this.setPassword(e.target.value)}
                       required
                     />
@@ -223,10 +222,10 @@ export class ProfileView extends React.Component {
                   <FormGroup>
                     <Form.Label>Birthday</Form.Label>
                     <FormControl
-                      type="date"
+                      type="birthdate"
                       name="Birthday"
                       value={Birthday}
-                      onChange={(e) => this.setBirthdaye(e.target.value)}
+                      onChange={(e) => this.setBirthday(e.target.value)}
                       required
                     />
                   </FormGroup>
