@@ -92,7 +92,7 @@ export class ProfileView extends React.Component {
       });
   };
 
-  onRemoveFavorite = (e, movies) => {
+  onRemoveFavorite = (e, movie) => {
     e.preventDefault();
     const Username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -200,7 +200,7 @@ export class ProfileView extends React.Component {
                     <FormControl
                       type="password"
                       name="Password"
-                      placeholder="New Password"
+                      placeholder="Enter Password"
                       value={Password}
                       onChange={(e) => this.setPassword(e.target.value)}
                       required
@@ -254,10 +254,8 @@ export class ProfileView extends React.Component {
           <Col>
             <Card>
               <Card.Body>
-                {FavoriteMovies.length === 0 && (
-                  <div className="text-center">No favorite movies</div>
-                )}
-                <Row className="favorite-movies-container">
+                {FavoriteMovies.length === 0 && <div>No favorite movies</div>}
+                <Row>
                   {FavoriteMovies.length > 0 &&
                     movies.map((movie) => {
                       if (
@@ -265,16 +263,10 @@ export class ProfileView extends React.Component {
                         FavoriteMovies.find((fav) => fav === movie._id)
                       ) {
                         return (
-                          <Card className="favorite-movie" key={movie._id}>
-                            <Card.Img
-                              className="favorite-movie-image"
-                              variant="top"
-                              src={movie.ImagePath}
-                            />
+                          <Card key={movie._id}>
+                            <Card.Img variant="top" src={movie.ImagePath} />
                             <Card.Body>
-                              <Card.Title className="movie-title">
-                                {movie.Title}
-                              </Card.Title>
+                              <Card.Title>{movie.Title}</Card.Title>
                               <Button
                                 value={movie._id}
                                 onClick={(e) => this.onRemoveFavorite(e, movie)}
@@ -300,19 +292,7 @@ ProfileView.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       Title: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
       ImagePath: PropTypes.string.isRequired,
-      Genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-      }).isRequired,
-      Director: PropTypes.shape({
-        Bio: PropTypes.string.isRequired,
-        Birth: PropTypes.string.isRequired,
-        Death: PropTypes.string.isRequired,
-        Name: PropTypes.string.isRequired,
-      }).isRequired,
     })
   ).isRequired,
-  onBackClick: PropTypes.func.isRequired,
 };
