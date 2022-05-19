@@ -32,7 +32,6 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Assign the result to the state
         this.setState({
           movies: response.data,
         });
@@ -41,8 +40,7 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-  //user logs in and function updates user property to particular user
-  //paramater renamed from user to authData since there are two inputs now
+  //data now takes both inputs the token and username
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({

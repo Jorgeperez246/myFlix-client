@@ -62,8 +62,7 @@ export function RegistrationView(props) {
           console.log(data);
           alert("Success! Please Login.");
           window.open("/", "_self");
-          //The second argument '_self' is necessary so that the page will
-          //open in the current tab
+          // The second argument '_self' allows page to open in same tab
         })
         .catch((response) => {
           console.error(response);
