@@ -17,6 +17,8 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export class MainView extends React.Component {
   constructor() {
@@ -74,6 +76,17 @@ export class MainView extends React.Component {
 
     return (
       <Router>
+        <Navbar>
+          <Navbar.Brand href="/" className="justify-content-start">
+            MyFlix
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              <Link to={`/users/${user}`}>Signed in as: {user}</Link>
+            </Navbar.Text>
+          </Navbar.Collapse>
+        </Navbar>
         <Row className="main-view justify-content-md-center">
           {/* homscreen displays every movie */}
           <Route
