@@ -237,7 +237,10 @@ export class ProfileView extends React.Component {
                     </Button>
                     <Button
                       variant="secondary"
-                      onClick={() => this.onDeleteUser()}
+                      onClick={() => {
+                        this.onDeleteUser();
+                        this.onLoggedOut();
+                      }}
                     >
                       Delete Profile
                     </Button>
