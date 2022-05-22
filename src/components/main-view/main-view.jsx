@@ -8,7 +8,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../../director-view/director-view";
 import { GenreView } from "../genre-view/genre-vew";
 import { Container } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { ProfileView } from "../profile-view/profile-view";
 import {
   Route,
@@ -19,6 +19,7 @@ import {
 } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 
 export class MainView extends React.Component {
   constructor() {
@@ -42,6 +43,10 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
+  refreshPage() {
+    window.location.reload(false);
+  }
+
   //data now takes both inputs the token and username
   onLoggedIn(authData) {
     console.log(authData);

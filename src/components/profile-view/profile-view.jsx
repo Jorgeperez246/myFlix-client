@@ -30,15 +30,6 @@ export class ProfileView extends React.Component {
     this.getUser(accessToken);
   }
 
-  onLoggedOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
-    window.open("/", "_self");
-  }
-
   getUser(token) {
     const Username = localStorage.getItem("user");
 
@@ -132,7 +123,14 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-
+  onLoggedOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    this.setState({
+      user: null,
+    });
+    window.open("/", "_self");
+  }
   setUsername(value) {
     this.setState({
       Username: value,
@@ -242,6 +240,12 @@ export class ProfileView extends React.Component {
                       onClick={() => this.onDeleteUser()}
                     >
                       Delete Profile
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={() => this.onLoggedOut()}
+                    >
+                      Logout
                     </Button>
                   </div>
                 </Form>
