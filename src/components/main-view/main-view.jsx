@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import reactDom from "react-dom";
-import { setMovies } from "../../actions/actions";
+import { setMovies, setUser } from "../../actions/actions";
 import MoviesList from "../movie-list/movie-list";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -25,13 +25,13 @@ import { Link } from "react-router-dom";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 
 class MainView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-      user: null,
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     movies: [],
+  //     user: null,
+  //   };
+  // }
   getMovies(token) {
     axios
       .get("https://myflixdb246.herokuapp.com/movies", {
@@ -49,12 +49,18 @@ class MainView extends React.Component {
   }
 
   //data now takes both inputs the token and username
+  componentDidMount() {
+    let accessToken = localStorage.getItem("token");
+    if (accessToken !== null) {
+      const { setUser } = this.props;
+      setUser(localStorage.getItem("user"));
+      this.getMovies(accessToken);
+    }
+  }
   onLoggedIn(authData) {
+    const { setUser } = this.props;
+    setUser(authData.user.Username);
     console.log(authData);
-    this.setState({
-      user: authData.user.Username,
-    });
-
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
@@ -66,19 +72,10 @@ class MainView extends React.Component {
       user: null,
     });
   }
-  componentDidMount() {
-    let accessToken = localStorage.getItem("token");
-    if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
-      this.getMovies(accessToken);
-    }
-  }
 
   render() {
     let { movies } = this.props;
-    let { user } = this.state;
+    let { user } = this.props;
 
     return (
       <Router>
@@ -243,8 +240,8 @@ class MainView extends React.Component {
 }
 // #7
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user };
 };
 
 // #8
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
