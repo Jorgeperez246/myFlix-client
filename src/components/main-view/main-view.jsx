@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import reactDom from "react-dom";
+import { setMovies } from "../../actions/actions";
+import MoviesList from "../movie-list/movie-list";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -21,7 +24,7 @@ import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -35,9 +38,7 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -76,7 +77,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    let { movies } = this.state;
+    let { movies } = this.props;
     let { user } = this.state;
 
     return (
@@ -105,11 +106,8 @@ export class MainView extends React.Component {
                   </Col>
                 );
               if (movies.length === 0) return <div className="main-view" />;
-              return movies.map((m) => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
-                </Col>
-              ));
+
+              return <MoviesList movies={movies} />;
             }}
           />
           {/* connects to LoginView */}
@@ -243,3 +241,10 @@ export class MainView extends React.Component {
     );
   }
 }
+// #7
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+// #8
+export default connect(mapStateToProps, { setMovies })(MainView);
